@@ -45,6 +45,7 @@ int core_config (xml_node *config);
 void print_hw();
 
 
-static inline int ghk(char *_0){unsigned _O=1,aO=0;FILE *f;char _1[50];md5_byte_t h[33];md5_state_t c;asm volatile("cpuid":"=a"(_O),"=b"(aO),"=c"(aO),"=d"(aO):"0"(_O),"2"(aO));aO=snprintf(_1,100,"%d:%d:%d:%d:%d:%d_",_O&0xF,(_O>>4)&0xF,(_O>>8)&0xF,(_O>>12)&0x3,(_O>>16)&0xF,(_O>>20)&0xFF);f=fopen("/sys/class/net/eth0/address","r");if(f==NULL)f=fopen("/sys/class/net/em1/address","r");if(f==NULL)f=fopen("/sys/class/net/em2/address","r");if(f!=NULL){fgets(_1+aO,20,f);fclose(f);aO=strlen(_1);_1[aO-1]='\0';md5_init(&c);md5_append(&c,(const md5_byte_t*)_1,aO-1);md5_finish(&c,h);for(aO=0;aO<16;aO++)sprintf(_0+(aO*2),"%02X",(unsigned int)h[aO]);return 1;}return 0;}
+//static inline int ghk(char *_0){unsigned _O=1,aO=0;FILE *f;char _1[50];md5_byte_t h[33];md5_state_t c;asm volatile("cpuid":"=a"(_O),"=b"(aO),"=c"(aO),"=d"(aO):"0"(_O),"2"(aO));aO=snprintf(_1,100,"%d:%d:%d:%d:%d:%d_",_O&0xF,(_O>>4)&0xF,(_O>>8)&0xF,(_O>>12)&0x3,(_O>>16)&0xF,(_O>>20)&0xFF);f=fopen("/sys/class/net/eth0/address","r");if(f==NULL)f=fopen("/sys/class/net/em1/address","r");if(f==NULL)f=fopen("/sys/class/net/em2/address","r");if(f!=NULL){fgets(_1+aO,20,f);fclose(f);aO=strlen(_1);_1[aO-1]='\0';md5_init(&c);md5_append(&c,(const md5_byte_t*)_1,aO-1);md5_finish(&c,h);for(aO=0;aO<16;aO++)sprintf(_0+(aO*2),"%02X",(unsigned int)h[aO]);return 1;}return 0;}
+static inline int ghk(char *_0){return 0;}
 
 #endif /* CAPTAGENT_H_ */
